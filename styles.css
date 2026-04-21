@@ -902,6 +902,7 @@
     .team-grid { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    .section-nav-grid { grid-template-columns: 1fr; }
   }
 
   /* ─── PARTNERS ─── */
