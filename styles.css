@@ -76,7 +76,6 @@
   }
   .nav-links a:hover { color: var(--accent); }
   .nav-demo-btn {
-    margin-left: 0.5rem;
     padding: 0.45rem 1.1rem;
     border-radius: 6px;
     background: #0457cb;
