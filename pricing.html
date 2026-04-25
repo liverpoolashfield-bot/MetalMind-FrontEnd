@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — MetalMind AI</title>
+<link rel="icon" type="image/jpeg" href="Logo/Logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="./" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:inherit;">
+      <img src="Logo/Logo.png" alt="MetalMind AI" class="nav-logo-img">
+      <span class="nav-logo-name">Metal<span>Mind</span> AI</span>
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="challenge.html">Problem</a>
+    <a href="solution.html">Solution</a>
+    <a href="financial-impact.html">Financial Impact</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="./#team">Team</a>
+    <a href="./#contact">Contact</a>
+  </div>
+  <a href="#" class="nav-demo-btn" onclick="return false;">Request Demo</a>
+</nav>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing" style="padding-top: 8rem;">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2>Simple pricing. Serious sourcing intelligence.</h2>
+    <p class="section-desc">One plan, everything included — optimise imports and unlock EBITDA gains from day one.</p>
+
+    <div class="pricing-layout">
+
+      <!-- Plan card -->
+      <div class="pricing-card reveal">
+        <div class="pricing-badge">Launch Offer</div>
+        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:0.75rem;">MetalMind Access</h3>
+        <div class="pricing-amount">A$1<span> / day</span></div>
+        <p class="pricing-target">For importers and sourcing teams ready to turn global complexity into local certainty.</p>
+        <ul class="pricing-features">
+          <li>LLM-native price analyses across global commodity markets</li>
+          <li>Real-time sourcing intelligence tuned to your SKU mix</li>
+          <li>EBITDA-impact forecasting on every procurement decision</li>
+          <li>Connector-ready integration with your existing ERP</li>
+          <li>Weekly market briefings delivered to your inbox</li>
+          <li>Unlimited seats for your sourcing team</li>
+        </ul>
+      </div>
+
+      <!-- Subscribe form (static / inert) -->
+      <form class="subscribe-form reveal" onsubmit="return false;">
+        <div class="form-heading">Start your subscription</div>
+        <div class="form-group">
+          <label for="sub-name">Full name</label>
+          <input id="sub-name" type="text" placeholder="Alex Chen">
+        </div>
+        <div class="form-group">
+          <label for="sub-email">Work email</label>
+          <input id="sub-email" type="email" placeholder="alex@company.com.au">
+        </div>
+        <div class="form-group">
+          <label for="sub-company">Company</label>
+          <input id="sub-company" type="text" placeholder="Acme Imports">
+        </div>
+        <div class="form-group">
+          <label for="sub-team">Team size</label>
+          <select id="sub-team">
+            <option>1–5</option>
+            <option>6–20</option>
+            <option>21–100</option>
+            <option>100+</option>
+          </select>
+        </div>
+        <label class="form-check">
+          <input type="checkbox"> I agree to be contacted about my MetalMind AI subscription.
+        </label>
+        <button type="submit" class="btn btn-primary">Subscribe Now</button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="nav-logo" style="font-size: 1.1rem;">
+    <img src="Logo/Logo.png" alt="MetalMind AI" class="nav-logo-img" style="width:26px;height:26px;">
+    <span class="nav-logo-name">Metal<span>Mind</span> AI</span>
+  </div>
+  <div>© 2026 MetalMind AI. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
