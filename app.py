@@ -119,8 +119,8 @@ async def create_checkout_session(tier: str, current: User = Depends(get_current
                 "price": PRICE_IDS[tier],
                 "quantity": 1,
             }],
-            success_url="http://localhost:8000/?session_id={CHECKOUT_SESSION_ID}",
-            cancel_url="http://localhost:8000/cancel",
+            success_url="http://localhost:8080/?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url="http://localhost:8080/",
             client_reference_id=current.username,
         )
         return {"sessionId": session.id}
@@ -158,11 +158,6 @@ async def stripe_webhook(request: Request):
 # ---- Downgrade / Cancel (Customer Portal) ----
 @app.post("/payment/portal")
 async def create_portal_session(current: User = Depends(get_current_user)):
-    try:
-        session = stripe.billing_portal.Session.create(
-            customer=current.username,  # in a real setup you would map user -> stripe customer ID
-            return_url="http://localhost:8000/",
-        )
-        return {"url": session.url}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    # For demo: return a message since we don't have Stripe customer ID mapping
+    # In production, store stripe_customer_id when user first subscribes
+    raise HTTPException(status_code=400, detail="Portal not available in demo mode")
