@@ -5,9 +5,950 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MetalMind AI — Next-Gen Import Optimisation</title>
 <link rel="icon" type="image/jpeg" href="Logo/Logo.png">
+<<<<<<< Updated upstream
 <link rel="stylesheet" href="styles.css">
+=======
+<style>
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5feff;
+    --bg-card: #ffffff;
+    --bg-4: #edfcfa;
+    --border: #d8eef8;
+    --text-primary: #1c2b33;
+    --text-secondary: #4a6274;
+    --accent: #0dacf1;
+    --accent-2: #3cc8f8;
+    --accent-dim: rgba(13, 172, 241, 0.12);
+    --accent-glow: rgba(13, 172, 241, 0.30);
+    --violet: #71f6d2;
+    --violet-2: #5ae8c2;
+    --violet-3: #c2fbed;
+    --violet-dim: rgba(113, 246, 210, 0.18);
+    --green: #71f6d2;
+    --yellow: #f5a3e0;
+    --accent-gradient: linear-gradient(135deg, #71f6d2 0%, #0dacf1 50%, #f5a3e0 100%);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background:
+      linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+      url('bg.jpg') center top / cover no-repeat fixed;
+    color: var(--text-primary);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.35rem; font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .nav-logo-img {
+    width: 32px; height: 32px;
+    border-radius: 7px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .nav-logo-name span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .nav-links { display: flex; gap: 2.25rem; }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 40%, rgba(13, 172, 241, 0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 35% at 70% 60%, rgba(245, 163, 224, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    animation: auroraDrift 20s ease-in-out infinite;
+  }
+  @keyframes auroraDrift {
+    0%   { transform: translate(0, 0)   scale(1); }
+    33%  { transform: translate(2%, -3%) scale(1.04); }
+    66%  { transform: translate(-3%, 2%) scale(1.07); }
+    100% { transform: translate(0, 0)   scale(1); }
+  }
+  .hero-logo {
+    width: min(410px, 45vw);
+    height: auto;
+    border-radius: 0;
+    object-fit: cover;
+    margin-bottom: 1.75rem;
+    box-shadow: none;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(13, 172, 241, 0.22);
+    border: 1px solid rgba(13, 172, 241, 0.55);
+    border-radius: 100px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0a2a3d;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    animation: pulseRing 2.4s ease-out infinite;
+  }
+  @keyframes pulseRing {
+    0%   { box-shadow: 0 0 0 0    rgba(13, 172, 241, 0.60); opacity: 1; }
+    70%  { box-shadow: 0 0 0 10px rgba(13, 172, 241, 0);    opacity: 1; }
+    100% { box-shadow: 0 0 0 0    rgba(13, 172, 241, 0);    opacity: 1; }
+  }
+
+  h1 {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 820px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  h1 em {
+    font-style: italic;
+    padding-right: 0.12em;
+    background: var(--accent-gradient);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .hero-sub {
+    max-width: 560px;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1rem;
+    margin-top: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+  .btn-primary {
+    background: #0457cb;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: #0171e3;
+    box-shadow: 0 8px 30px rgba(4,87,203,0.35), 0 0 0 1px rgba(113,246,210,0.30);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-metrics {
+    display: flex; gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .metric { text-align: center; }
+  .metric-value {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 2rem; font-weight: 700;
+    background: linear-gradient(135deg, #1a8fd1 0%, #0a52a0 50%, #0d3478 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .metric-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 2rem; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 600px;
+    line-height: 1.75;
+  }
+
+  /* ─── PROBLEM ─── */
+  .problem { background: rgba(237,252,250,0.72); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .problem-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    overflow: hidden;
+  }
+  .problem-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .problem-card:hover::before { opacity: 1; }
+  .problem-card:hover {
+    border-color: rgba(13, 172, 241, 0.40);
+    box-shadow: 0 8px 32px rgba(13,172,241,0.10);
+    transform: translateY(-4px);
+  }
+  .problem-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(13, 172, 241, 0.10);
+    border: 1px solid rgba(13, 172, 241, 0.20);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .problem-card h3 {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .problem-card p {
+    color: var(--text-secondary);
+    font-size: 0.93rem;
+    line-height: 1.7;
+  }
+
+  /* ─── SOLUTION ─── */
+  .solution-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .solution-text p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .solution-features { display: flex; flex-direction: column; gap: 1.25rem; }
+  .feature {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.3s;
+  }
+  .feature:hover {
+    border-color: rgba(113, 246, 210, 0.55);
+    box-shadow: 0 4px 20px rgba(113, 246, 210, 0.12);
+  }
+  .feature-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--violet-2);
+    margin-top: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(113, 246, 210, 0.6);
+  }
+  .feature h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .feature p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* ─── DEMO ─── */
+  .demo { background: rgba(245,254,255,0.72); text-align: center; }
+  .demo-frame {
+    margin-top: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+  }
+  .demo-toolbar {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(13,172,241,0.06);
+    border-bottom: 1px solid var(--border);
+  }
+  .demo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .demo-dot:nth-child(1) { background: #ff5f57; }
+  .demo-dot:nth-child(2) { background: #ffbd2e; }
+  .demo-dot:nth-child(3) { background: #28ca41; }
+  .demo-url {
+    flex: 1;
+    text-align: center;
+    font-family: 'Consolas', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+  .demo-placeholder {
+    padding: 4rem 2rem;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1.25rem;
+  }
+  .demo-placeholder svg {
+    width: 56px; height: 56px;
+    stroke: var(--accent);
+    opacity: 0.6;
+  }
+  .demo-placeholder p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  /* ─── PRICING ─── */
+  .pricing { background: rgba(237,252,250,0.72); }
+  .pricing-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .pricing-card {
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--violet));
+  }
+  .pricing-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+  }
+  .pricing-amount {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .pricing-amount span {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  .pricing-target {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .pricing-features {
+    list-style: none;
+    display: flex; flex-direction: column;
+    gap: 0.65rem;
+  }
+  .pricing-features li {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .pricing-strategy {
+    display: flex; flex-direction: column;
+    gap: 1.25rem;
+  }
+  .strategy-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .strategy-card:hover { border-color: rgba(13, 172, 241, 0.40); }
+  .strategy-phase {
+    font-family: 'Consolas', monospace;
+    font-size: 0.7rem;
+    color: var(--accent-2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .strategy-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .strategy-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ─── GROWTH ─── */
+  .growth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .chart-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+  }
+  .chart-card h3 {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+  .chart-card .chart-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .chart-area {
+    width: 100%;
+    height: 240px;
+    position: relative;
+  }
+  .chart-area canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .kpi-card:hover { border-color: rgba(13, 172, 241, 0.40); }
+  .kpi-value {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .kpi-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+  }
+  .projections-table {
+    margin-top: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .projections-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .projections-table thead {
+    background: var(--accent-dim);
+  }
+  .projections-table th {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+  }
+  .projections-table td {
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .projections-table tr:last-child td { border-bottom: none; }
+  .projections-table tbody tr:hover { background: rgba(13,172,241,0.05); }
+  .projections-table .highlight {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .projections-table .revenue-cell {
+    color: #0457cb;
+    font-family: 'Consolas', monospace;
+    font-weight: 500;
+  }
+
+  /* ─── TEAM ─── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+  }
+  .team-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--green) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .team-card:hover {
+    border-color: rgba(13, 172, 241, 0.40);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(13,172,241,0.10);
+  }
+  .team-card:hover::before { opacity: 1; }
+  .team-avatar {
+    width: 112px; height: 112px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(13,172,241,0.10), rgba(113,246,210,0.12));
+    border: 2px solid rgba(13,172,241,0.22);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-clip: padding-box;
+    color: var(--accent-2);
+    overflow: hidden;
+  }
+  .team-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .team-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .team-card p {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* ─── CTA / CONTACT ─── */
+  .cta {
+    background: rgba(237,252,250,0.72);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  .cta-inner {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .cta-inner h2 { margin-bottom: 1rem; }
+  .cta-inner .section-desc {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .contact-item a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .contact-item a:hover { opacity: 0.7; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label { color: var(--accent-2); }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal:nth-child(2) { transition-delay: 0.08s; }
+  .reveal:nth-child(3) { transition-delay: 0.16s; }
+  .reveal:nth-child(4) { transition-delay: 0.24s; }
+
+  /* ─── EBITDA MODEL ─── */
+  .ebitda { background: rgba(237,252,250,0.72); }
+  .ebitda-intro {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 680px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .ebitda .kpi-row { margin-bottom: 3rem; margin-top: 0; }
+  .kpi-card.highlight-card { border-color: var(--accent); }
+  .ebitda-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .ebitda-chart-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+  }
+  .ebitda-chart-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+  .ebitda-chart-card .chart-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .ebitda-table-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .ebitda-table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .ebitda-table-wrap thead { background: var(--accent-dim); }
+  .ebitda-table-wrap th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+  }
+  .ebitda-table-wrap th:not(:first-child) { text-align: right; }
+  .ebitda-table-wrap td {
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .ebitda-table-wrap td:not(:first-child) {
+    text-align: right;
+    font-family: 'Consolas', monospace;
+    font-size: 0.85rem;
+  }
+  .ebitda-table-wrap tr:last-child td { border-bottom: none; }
+  .ebitda-table-wrap tbody tr:hover { background: rgba(13,172,241,0.05); }
+  .ebitda-table-wrap .row-label { color: var(--text-primary); font-weight: 500; }
+  .ebitda-table-wrap .ebitda-row td {
+    color: #0457cb;
+    font-weight: 700;
+    border-top: 2px solid var(--border);
+  }
+  .ebitda-table-wrap .improvement-row td { color: var(--violet-2); font-weight: 700; }
+  .ebitda-table-wrap .savings-cell { color: var(--violet-2); }
+  .ebitda-table-wrap .delta-col { color: var(--violet-2); }
+  .assumptions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .assumption-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .assumption-card:hover { border-color: rgba(13, 172, 241, 0.40); }
+  .assumption-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35rem;
+  }
+  .assumption-value {
+    font-family: 'Consolas', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .assumption-value.accent { color: var(--accent); }
+  .assumption-value.teal { color: var(--violet-2); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-metrics { flex-direction: column; gap: 1.5rem; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .solution-content { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .pricing-layout { grid-template-columns: 1fr; }
+    .ebitda-grid { grid-template-columns: 1fr; }
+    .ebitda-table-wrap { overflow-x: auto; }
+    .assumptions-grid { grid-template-columns: 1fr 1fr; }
+    .growth-grid { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  /* ─── MEMBERSHIP ─── */
+  .membership {
+    padding: 6rem 2rem;
+    background: var(--bg-secondary);
+    text-align: center;
+  }
+  .membership h2 {
+    font-size: clamp(2rem,5vw,3rem);
+    margin-bottom: 2rem;
+  }
+  .benefits {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    margin-bottom: 3rem;
+  }
+  .benefit-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .pricing {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .price-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .price-card h3 {margin:0.5rem 0;}
+  .price-card .price {font-size:2rem;font-weight:700;margin:0.5rem 0;}
+  .price-card .btn-primary {margin-top:auto;}
+
+  /* ─── PAYMENT MODAL ─── */
+  .payment-modal {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity .3s;
+  }
+  .payment-modal.open {opacity:1;visibility:visible;}
+  .payment-modal .dialog {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 420px; width: 90%;
+    position: relative;
+    text-align:center;
+  }
+  .payment-modal .close {
+    position:absolute; top:0.5rem; right:0.5rem; cursor:pointer; font-size:1.2rem;
+  }
+</style>
+
+>>>>>>> Stashed changes
 </head>
 <body>
+  <nav>
+    <button id="loginBtn">Login / Register</button>
+    <div id="accountInfo" style="display:none;">
+      <span id="userTier"></span>
+      <button id="manageSubBtn">Manage Subscription</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </nav>
 
 <!-- NAV -->
 <nav>
@@ -37,10 +978,81 @@
     <a href="https://metalmindproject-production-1c44.up.railway.app/" target="_blank" class="btn btn-primary">Launch App →</a>
     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
   </div>
+<<<<<<< Updated upstream
   <div style="margin-top:1.5rem;">
     <a href="https://www.linkedin.com/in/dr-sangeeta-aditya" target="_blank" rel="noopener noreferrer">
       <img src="QR.jpeg" alt="LinkedIn QR Code — Dr. Sangeeta Aditya" style="width:160px;height:160px;border-radius:8px;display:block;margin:0 auto;" />
     </a>
+=======
+</section>
+
+<!-- PRICING SECTION -->
+<section class="membership">
+  <h2>Join the MetalMind Community</h2>
+  <p>Unlock premium features, priority support, and early access to new tools.</p>
+  <div class="benefits">
+    <div class="benefit-card">🚀 Faster import optimization</div>
+    <div class="benefit-card">🔧 Advanced customization</div>
+    <div class="benefit-card">🤝 Community support</div>
+  </div>
+  <div class="pricing">
+    <div class="price-card">
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <p>Basic access</p>
+      <a href="#" class="btn btn-primary" data-plan="free">Get Started</a>
+    </div>
+    <div class="price-card">
+      <h3>Basic</h3>
+      <div class="price">$17/mo</div>
+      <p>Legal/Finance Q&A, basic notes</p>
+      <button class="btn btn-primary subscribeBtn" data-tier="basic">Subscribe</button>
+    </div>
+    <div class="price-card">
+      <h3>Professional</h3>
+      <div class="price">$42/mo</div>
+      <p>Full AI matchmaking, unlimited notes</p>
+      <button class="btn btn-primary subscribeBtn" data-tier="professional">Subscribe</button>
+    </div>
+    <div class="price-card">
+      <h3>Enterprise</h3>
+      <div class="price">$129/mo</div>
+      <p>Team access, custom clause library</p>
+      <button class="btn btn-primary subscribeBtn" data-tier="enterprise">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-label">The Challenge</div>
+    <h2>Bridge the Gap Between Global Complexity & Local Certainty</h2>
+    <p class="section-desc">Import teams waste time comparing fragmented data across regions, currencies, and compliance frameworks — relying on spreadsheets and gut instinct instead of intelligence.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">📊</div>
+        <h3>Price Opacity Across Markets</h3>
+        <p>Commodity and material prices fluctuate across countries and exchanges. Without real-time visibility, procurement teams overpay or miss optimal buying windows.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🔍</div>
+        <h3>Fragmented Supplier Evaluation</h3>
+        <p>Comparing suppliers means juggling price, compliance history, delivery risk, and reputation across disconnected systems — slowing decisions when speed matters most.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">⚖️</div>
+        <h3>Compliance &amp; Risk Blind Spots</h3>
+        <p>Regulatory requirements vary by jurisdiction. Manual compliance checks create bottlenecks and expose organisations to costly oversights in trade and tariff adherence.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🕐</div>
+        <h3>Slow, Manual Decision Cycles</h3>
+        <p>Legacy sourcing workflows rely on email chains, static RFQs, and manual data aggregation — creating days-long delays in decisions that should take minutes.</p>
+      </div>
+    </div>
+>>>>>>> Stashed changes
   </div>
 </section>
 
@@ -164,6 +1176,95 @@
   );
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  // ----- Helper: API calls -----
+  const api = async (url, method='GET', body=null) => {
+    const opts = { method, headers:{ 'Content-Type':'application/json' } };
+    const token = localStorage.getItem('token');
+    if (token) opts.headers['Authorization'] = `Bearer ${token}`;
+    if (body) opts.body = JSON.stringify(body);
+    const res = await fetch(url, opts);
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    return res.json();
+  };
+
+  // ----- Auth UI -----
+  const loginBtn = document.getElementById('loginBtn');
+  const accountInfo = document.getElementById('accountInfo');
+  const userTierSpan = document.getElementById('userTier');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const manageSubBtn = document.getElementById('manageSubBtn');
+
+  const updateUI = async () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      loginBtn.style.display='none';
+      accountInfo.style.display='flex';
+      try { const data = await api('/user/tier'); userTierSpan.textContent = `Tier: ${data.tier}`; }
+      catch { userTierSpan.textContent='Tier: unknown'; }
+    } else {
+      loginBtn.style.display='block';
+      accountInfo.style.display='none';
+    }
+  };
+
+  // Simple prompt‑based login / register (for demo only)
+  loginBtn.addEventListener('click', async () => {
+    const username = prompt('Username:');
+    const password = prompt('Password:');
+    if (!username||!password) return;
+    try {
+      const token = await api('/token', 'POST', { username, password });
+      localStorage.setItem('token', token.access_token);
+      await updateUI();
+    } catch(e){ alert('Login failed'); }
+  });
+
+  logoutBtn.addEventListener('click', () => { localStorage.removeItem('token'); updateUI(); });
+
+  manageSubBtn.addEventListener('click', async () => {
+    try {
+      const data = await api('/payment/portal');
+      window.location.href = data.url;
+    } catch(e){ alert('Could not open portal'); }
+  });
+
+  // ----- Pricing & Stripe -----
+  const modal = document.querySelector('.payment-modal');
+  const closeBtn = modal.querySelector('.close');
+  const checkoutBtn = document.getElementById('checkout-button');
+  const planDesc = document.getElementById('plan-description');
+  let selectedTier = null;
+
+  // Open modal for subscription buttons
+  document.querySelectorAll('.subscribeBtn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const tier = btn.getAttribute('data-tier');
+      const token = localStorage.getItem('token');
+      if (!token) { alert('Please log in first'); return; }
+      selectedTier = tier;
+      planDesc.textContent = `${tier.charAt(0).toUpperCase()+tier.slice(1)} – $${{'basic':17,'professional':42,'enterprise':129}[tier]}/mo`;
+      checkoutBtn.style.display = 'inline-block';
+      modal.classList.add('open');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+
+  // Stripe init with publishable key from env (hard‑coded for demo)
+  const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXX');
+  checkoutBtn.addEventListener('click', async () => {
+    if (!selectedTier) return;
+    try {
+      const { sessionId } = await api('/payment/create-session', 'POST', { tier: selectedTier });
+      stripe.redirectToCheckout({ sessionId });
+    } catch(e){ alert('Failed to start checkout'); }
+  });
+
+  // Initial UI state
+  updateUI();
+</script>
 
 <!-- FOOTER -->
 <footer>
@@ -174,5 +1275,8 @@
   <div>© 2026 MetalMind AI. All rights reserved.</div>
 </footer>
 
+  
+
+  
 </body>
 </html>
